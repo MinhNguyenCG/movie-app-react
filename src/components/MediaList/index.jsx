@@ -1,11 +1,28 @@
 import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 
+const TABS = [
+  {
+    id: "all",
+    label: "All",
+  },
+  {
+    id: "movie",
+    label: "Movie",
+  },
+  {
+    id: "tv",
+    label: "TV Show",
+  },
+];
+
 const MediaList = () => {
   const [mediaList, setMediaList] = useState([]);
+  const [activeTabId, setActiveTabId] = useState(TABS[0].id);
 
   useEffect(() => {
-    const url = "https://api.themoviedb.org/3/trending/all/day?language=en-US";
+    const url = `https://api.themoviedb.org/3/trending/${activeTabId}/day?language=en-US`;
+
     const options = {
       method: "GET",
       headers: {
@@ -22,18 +39,25 @@ const MediaList = () => {
         setMediaList(trendingMediaList);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [activeTabId]);
 
   return (
     <div className="bg-black px-8 py-10 text-[1.2vw] text-white">
       <div className="mb-6 flex items-center gap-4">
         <p className="text-[2vw] font-bold">Trending</p>
+
         <ul className="flex gap-4 rounded border border-white">
-          <li className="cursor-pointer rounded bg-white px-2 py-1 text-black">
-            All
-          </li>
-          <li className="cursor-pointer rounded px-2 py-1">Movie</li>
-          <li className="cursor-pointer rounded px-2 py-1">TV Show</li>
+          {TABS.map((tab) => (
+            <li
+              key={tab.id}
+              className={`cursor-pointer rounded px-2 py-1 ${
+                activeTabId === tab.id ? "bg-white text-black" : ""
+              }`}
+              onClick={() => setActiveTabId(tab.id)}
+            >
+              {tab.label}
+            </li>
+          ))}
         </ul>
       </div>
 
