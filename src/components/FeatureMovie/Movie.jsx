@@ -20,7 +20,7 @@ const Movie = ({ data }) => {
         <p className="mb-2 font-bold transition-all duration-500 ease-in-out sm:text-[2vw]">
           {data.title}
         </p>
-        <div className="transition-all duration-500 ease-in-out sm:text-[1.5vw]">
+        <div className="transition-all duration-500 ease-in-out sm:text-[1.52vw]">
           <p className="inline border border-gray-400 p-1 text-gray-400">
             PG13
           </p>
@@ -28,7 +28,7 @@ const Movie = ({ data }) => {
         </div>
 
         <div>
-          <div className="mt-4 hidden text-[1.5vw] sm:block">
+          <div className="mt-4 hidden text-[1.2vw] sm:block">
             <p className="mb-2 font-bold">Overview</p>
             <p>{data.overview}</p>
           </div>
