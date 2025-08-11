@@ -1,5 +1,13 @@
+import Header from "./components/Header";
+import FeatureMovie from "./components/FeatureMovie";
+
 function App() {
-  return <p>Movie App</p>;
+  return (
+    <>
+      <Header />
+      <FeatureMovie />
+    </>
+  );
 }
 
 export default App;
