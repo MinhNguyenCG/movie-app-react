@@ -1,27 +1,12 @@
 import MovieCard from "./MovieCard";
 import { useState, useEffect } from "react";
 
-const TABS = [
-  {
-    id: "all",
-    label: "All",
-  },
-  {
-    id: "movie",
-    label: "Movie",
-  },
-  {
-    id: "tv",
-    label: "TV Show",
-  },
-];
-
-const MediaList = () => {
+const MediaList = ({ title, tabs }) => {
   const [mediaList, setMediaList] = useState([]);
-  const [activeTabId, setActiveTabId] = useState(TABS[0].id);
+  const [activeTabId, setActiveTabId] = useState(tabs[0]?.id);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/trending/${activeTabId}/day?language=en-US`;
+    const url = tabs.find((tab) => tab.id === activeTabId)?.url;
 
     const options = {
       method: "GET",
@@ -39,15 +24,15 @@ const MediaList = () => {
         setMediaList(trendingMediaList);
       })
       .catch((err) => console.error(err));
-  }, [activeTabId]);
+  }, [activeTabId, tabs]);
 
   return (
     <div className="bg-black px-8 py-10 text-[1.2vw] text-white">
       <div className="mb-6 flex items-center gap-4">
-        <p className="text-[2vw] font-bold">Trending</p>
+        <p className="text-[2vw] font-bold">{title}</p>
 
         <ul className="flex gap-4 rounded border border-white">
-          {TABS.map((tab) => (
+          {tabs.map((tab) => (
             <li
               key={tab.id}
               className={`cursor-pointer rounded px-2 py-1 ${

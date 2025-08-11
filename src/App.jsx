@@ -1,13 +1,15 @@
 import Header from "./components/Header";
 import FeatureMovie from "./components/FeatureMovie";
 import MediaList from "./components/MediaList";
+import { TRENDING_TABS, RATED_TABS } from "./libs/constants";
 
 function App() {
   return (
     <>
       <Header />
       <FeatureMovie />
-      <MediaList />
+      <MediaList title="Trending" tabs={TRENDING_TABS} />
+      <MediaList title="Top Rated" tabs={RATED_TABS} />
     </>
   );
 }
