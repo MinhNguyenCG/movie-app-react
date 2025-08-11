@@ -1,31 +1,66 @@
 @import "tailwindcss";
 @font-face {
   font-family: "Netflix Sans";
-  src: local("NetflixSans-Regular"),
+  src:
+    local("NetflixSans-Regular"),
     url("./fonts/NetflixSans-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Netflix Sans";
-  src: local("NetflixSans-Bold"),
+  src:
+    local("NetflixSans-Bold"),
     url("./fonts/NetflixSans-Bold.woff2") format("woff2");
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Netflix Sans";
-  src: local("NetflixSans-Medium"),
+  src:
+    local("NetflixSans-Medium"),
     url("./fonts/NetflixSans-Medium.woff2") format("woff2");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Netflix Sans";
-  src: local("NetflixSans-Light"),
+  src:
+    local("NetflixSans-Light"),
     url("./fonts/NetflixSans-Light.woff2") format("woff2");
   font-weight: 300;
 }
 
 body {
   font-family: "Netflix Sans", sans-serif;
+}
+
+/* Custom animations for movie transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
 }

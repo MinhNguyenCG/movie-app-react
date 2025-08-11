@@ -3,7 +3,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
-    <header className="flex h-14 items-center justify-between bg-slate-950 pr-8 pl-8 text-white">
+    <header className="flex h-[8vh] items-center justify-between bg-slate-950 pr-8 pl-8 text-white">
       <div className="flex items-center gap-4">
         <a>
           <img
