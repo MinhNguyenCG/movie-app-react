@@ -32,7 +32,7 @@ const CircularProgressBar = ({
           x={`${size / 2}vw`}
           y={`${size / 2}vw`}
           fill="white"
-          fontSize="1.2vw"
+          fontSize="0.9vw"
           alignmentBaseline="middle"
           textAnchor="middle"
         >

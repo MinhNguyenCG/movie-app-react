@@ -46,7 +46,7 @@ const MediaList = ({ title, tabs }) => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {mediaList.map((media) => (
           <MovieCard key={media.id} media={media} />
         ))}
