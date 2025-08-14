@@ -34,11 +34,11 @@ const Movie = ({ data }) => {
           </div>
 
           <div className="mt-4">
-            <button className="mr-2 rounded bg-white px-4 py-2 text-[10px] text-black transition-all duration-300 hover:bg-gray-200 lg:text-lg">
+            <button className="mr-2 cursor-pointer rounded bg-white px-4 py-2 text-[10px] text-black transition-all duration-300 hover:bg-gray-200 lg:text-lg">
               <FontAwesomeIcon icon={faPlay} />
               Play
             </button>
-            <button className="rounded bg-slate-400/35 px-4 py-2 text-[10px] text-white transition-all duration-300 hover:bg-slate-400/50 lg:text-lg">
+            <button className="cursor-pointer rounded bg-slate-400/35 px-4 py-2 text-[10px] text-white transition-all duration-300 hover:bg-slate-400/50 lg:text-lg">
               View More
             </button>
           </div>

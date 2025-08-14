@@ -6,7 +6,6 @@ import { TRENDING_TABS, RATED_TABS } from "../libs/constants";
 function HomePage() {
   return (
     <>
-      <Header />
       <FeatureMovie />
       <MediaList title="Trending" tabs={TRENDING_TABS} />
       <MediaList title="Top Rated" tabs={RATED_TABS} />
