@@ -2,7 +2,7 @@ import React from "react";
 
 const ActorCard = ({ actor }) => {
   return (
-    <div className="rounded-lg border border-slate-300 bg-black shadow-sm">
+    <div className="rounded-lg border border-slate-800 bg-black shadow-sm">
       <img
         src={
           actor.profile_path

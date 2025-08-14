@@ -1,11 +1,13 @@
-import CircularProgressBar from "../CircularProgressBar";
+import CircularProgressBar from "./CircularProgressBar";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ media }) => {
-  console.log(media);
   return (
-    <Link to={`/movie/${media.id}`}>
-      <div className="rounded-lg border border-slate-800">
+    <Link
+      className="rounded-lg border border-slate-800"
+      to={`/movie/${media.id}`}
+    >
+      <div>
         <div className="relative">
           <img
             src={`https://image.tmdb.org/t/p/w500${media.backdrop_path}`}

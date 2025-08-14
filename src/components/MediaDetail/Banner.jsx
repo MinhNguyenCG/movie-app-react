@@ -11,7 +11,7 @@ const Banner = ({ mediaInfo }) => {
   ).find((release) => release.certification)?.certification;
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden shadow-sm shadow-slate-800">
       <img
         src={`https://image.tmdb.org/t/p/original/${mediaInfo?.backdrop_path}`}
         alt=""
@@ -38,7 +38,7 @@ const Banner = ({ mediaInfo }) => {
           <div className="mt-[2vw] mb-[2vw] flex items-center gap-10">
             <div className="flex items-center gap-2">
               <CircularProgressBar
-                percent={Math.round(mediaInfo?.vote_average * 10)}
+                percent={Math.round(mediaInfo?.vote_average * 10) || 0}
                 size={3}
                 strokeWidth={0.3}
               />
