@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import FeatureMovie from "../components/FeatureMovie";
-import MediaList from "../components/MediaList";
-import { TRENDING_TABS, RATED_TABS } from "../libs/constants";
+import Header from "@components/Header";
+import FeatureMovie from "@components/FeatureMovie";
+import MediaList from "@components/MediaList";
+import { TRENDING_TABS, RATED_TABS } from "@libs/constants";
 
 function HomePage() {
   return (

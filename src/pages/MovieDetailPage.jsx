@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import LoadingPage from "../components/Loading";
-import Banner from "../components/MediaDetail/Banner";
-import ActorList from "../components/MediaDetail/ActorList";
+import LoadingPage from "@components/Loading";
+import Banner from "@components/MediaDetail/Banner";
+import ActorList from "@components/MediaDetail/ActorList";
+import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -38,6 +39,7 @@ const MovieDetailPage = () => {
         <div className="mx-auto flex max-w-7xl gap-[2.5vw] p-6 py-10">
           <div className="flex-[2]">
             <ActorList actorList={movieInfo?.credits?.cast} />
+            <RelatedMediaList />
           </div>
           <div className="mb-4 flex-1 text-[1.4vw] font-bold">Information</div>
         </div>
