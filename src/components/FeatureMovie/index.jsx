@@ -1,31 +1,20 @@
 import PaginateIndicator from "./PaginateIndicator";
 import Movie from "./Movie";
 import { useState, useEffect } from "react";
+import useFetch from "@hooks/useFetch";
 
 const FeatureMovie = () => {
-  const [movies, setMovies] = useState([]);
   const [activeMovieId, setActiveMovieId] = useState();
+  const { data: popularMoviesResponse } = useFetch({ url: "/movie/popular" });
+
+  const movies = (popularMoviesResponse.results || []).slice(0, 4);
 
   useEffect(() => {
-    const url =
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-      },
-    };
-
-    fetch(url, options)
-      .then(async (res) => {
-        const data = await res.json();
-        const popularMovies = data.results.slice(0, 4);
-        setMovies(popularMovies);
-        setActiveMovieId(popularMovies[0].id);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    if (movies[0]?.id) {
+      setActiveMovieId(movies[0].id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(movies)]);
 
   return (
     <div className="relative overflow-hidden text-white">

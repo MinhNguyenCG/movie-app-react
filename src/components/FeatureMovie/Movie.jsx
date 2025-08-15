@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Movie = ({ data }) => {
-  console.log({ data });
-
   // Safety check for undefined data
   if (!data) {
     return null;
