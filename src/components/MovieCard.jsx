@@ -10,7 +10,11 @@ const MovieCard = ({ media }) => {
       <div>
         <div className="relative">
           <img
-            src={`https://image.tmdb.org/t/p/w500${media.backdrop_path}`}
+            src={
+              media.backdrop_path
+                ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
+                : "/placeholder.png"
+            }
             alt={media.title}
             className="rounded-lg"
           />

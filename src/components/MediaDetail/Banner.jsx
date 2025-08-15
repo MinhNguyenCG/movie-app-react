@@ -8,7 +8,7 @@ const Banner = ({ mediaInfo }) => {
     (mediaInfo?.release_dates?.results || []).find(
       (result) => result.iso_3166_1 === "US",
     )?.release_dates || []
-  ).find((release) => release.certification)?.certification;
+  ).find((release) => release?.certification)?.certification;
 
   return (
     <div className="relative overflow-hidden shadow-sm shadow-slate-800">
@@ -32,7 +32,9 @@ const Banner = ({ mediaInfo }) => {
               {certificate}
             </span>
             <p>{mediaInfo?.release_date}</p>
-            <p>{mediaInfo?.genres.map((genre) => genre.name).join(", ")}</p>
+            <p>
+              {mediaInfo?.genres?.map((genre) => genre.name).join(", ") || ""}
+            </p>
           </div>
 
           <div className="mt-[2vw] mb-[2vw] flex items-center gap-10">
@@ -71,9 +73,9 @@ const Banner = ({ mediaInfo }) => {
               <p className="font-bold">Cast</p>
               <p>
                 {mediaInfo?.credits?.cast
-                  .slice(0, 5)
-                  .map((cast) => cast.name)
-                  .join(", ")}
+                  ?.slice(0, 5)
+                  ?.map((cast) => cast.name)
+                  ?.join(", ") || ""}
               </p>
             </div>
           </div>
