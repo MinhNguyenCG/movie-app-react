@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ActorCard from "./ActorCard";
+import ActorCard from "@components/MediaDetail/ActorCard";
 
 const ActorList = ({ actorList = [] }) => {
   const [isShowMore, setIsShowMore] = useState(false);

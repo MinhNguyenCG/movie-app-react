@@ -1,6 +1,6 @@
-import CircularProgressBar from "./CircularProgressBar";
+import CircularProgressBar from "@components/CircularProgressBar";
 import { Link } from "react-router-dom";
-
+import ImageComponent from "@components/ImageComponent";
 const MovieCard = ({ media }) => {
   return (
     <Link
@@ -9,14 +9,16 @@ const MovieCard = ({ media }) => {
     >
       <div>
         <div className="relative">
-          <img
+          <ImageComponent
             src={
               media.backdrop_path
                 ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
                 : "/placeholder.png"
             }
             alt={media.title}
-            className="rounded-lg"
+            className="w-full rounded-t-lg"
+            width={500}
+            height={300}
           />
 
           {media.media_type === "tv" && (

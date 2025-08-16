@@ -2,6 +2,7 @@ import React from "react";
 import CircularProgressBar from "../CircularProgressBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import ImageComponent from "@components/ImageComponent";
 
 const Banner = ({ mediaInfo }) => {
   const certificate = (
@@ -12,14 +13,14 @@ const Banner = ({ mediaInfo }) => {
 
   return (
     <div className="relative overflow-hidden shadow-sm shadow-slate-800">
-      <img
+      <ImageComponent
         src={`https://image.tmdb.org/t/p/original/${mediaInfo?.backdrop_path}`}
         alt=""
         className="absolute inset-0 w-full brightness-20"
       />
 
       <div className="relative mx-auto flex max-w-7xl gap-[2.5vw] p-6 py-10">
-        <img
+        <ImageComponent
           src={`https://image.tmdb.org/t/p/original/${mediaInfo?.poster_path}`}
           alt=""
           className="flex-1/3 overflow-hidden rounded-lg"

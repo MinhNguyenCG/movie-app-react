@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import ImageComponent from "@components/ImageComponent";
 
 const Movie = ({ data }) => {
   // Safety check for undefined data
@@ -9,10 +10,12 @@ const Movie = ({ data }) => {
 
   return (
     <div className="transition-all duration-500 ease-in-out">
-      <img
+      <ImageComponent
         src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         alt={data.title}
         className="aspect-video w-full brightness-50 transition-all duration-500 ease-in-out"
+        width={1920}
+        height={1080}
       />
       <div className="absolute bottom-[10%] left-8 w-1/2 text-white transition-all duration-500 ease-in-out sm:w-1/2">
         <p className="mb-2 font-bold transition-all duration-500 ease-in-out sm:text-[2vw]">
