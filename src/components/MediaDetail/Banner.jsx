@@ -4,44 +4,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import ImageComponent from "@components/ImageComponent";
 
-const Banner = ({ mediaInfo }) => {
-  const certificate = (
-    (mediaInfo?.release_dates?.results || []).find(
-      (result) => result.iso_3166_1 === "US",
-    )?.release_dates || []
-  ).find((release) => release?.certification)?.certification;
-
+const Banner = ({
+  title,
+  backdrop_path,
+  poster_path,
+  certificate,
+  crews,
+  cast,
+  genres,
+  release_date,
+  overview,
+  point,
+}) => {
   return (
     <div className="relative overflow-hidden shadow-sm shadow-slate-800">
       <ImageComponent
-        src={`https://image.tmdb.org/t/p/original/${mediaInfo?.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
         alt=""
         className="absolute inset-0 w-full brightness-20"
       />
 
       <div className="relative mx-auto flex max-w-7xl gap-[2.5vw] p-6 py-10">
         <ImageComponent
-          src={`https://image.tmdb.org/t/p/original/${mediaInfo?.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt=""
           className="flex-1/3 overflow-hidden rounded-lg"
+          width={500}
+          height={300}
         />
 
         <div className="flex-2/3 text-[1.2vw] text-white">
-          <h1 className="mb-2 text-[2vw] font-bold">{mediaInfo?.title}</h1>
+          <h1 className="mb-2 text-[2vw] font-bold">{title}</h1>
           <div className="flex items-center gap-2">
             <span className="border border-gray-400 p-1 text-gray-400">
               {certificate}
             </span>
-            <p>{mediaInfo?.release_date}</p>
-            <p>
-              {mediaInfo?.genres?.map((genre) => genre.name).join(", ") || ""}
-            </p>
+            <p>{release_date}</p>
+            <p>{genres}</p>
           </div>
 
           <div className="mt-[2vw] mb-[2vw] flex items-center gap-10">
             <div className="flex items-center gap-2">
               <CircularProgressBar
-                percent={Math.round(mediaInfo?.vote_average * 10) || 0}
+                percent={Math.round(point * 10) || 0}
                 size={3}
                 strokeWidth={0.3}
               />
@@ -55,29 +60,18 @@ const Banner = ({ mediaInfo }) => {
 
           <div className="mb-[2vw]">
             <p className="mb-2 text-[1.5vw] font-bold">Overview</p>
-            <p>{mediaInfo?.overview}</p>
+            <p>{overview}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-2">
             <div>
               <p className="font-bold">Director</p>
-              <p>
-                {
-                  mediaInfo?.credits?.crew.find(
-                    (crew) => crew.job === "Director",
-                  )?.name
-                }
-              </p>
+              <p>{crews}</p>
             </div>
 
             <div>
               <p className="font-bold">Cast</p>
-              <p>
-                {mediaInfo?.credits?.cast
-                  ?.slice(0, 5)
-                  ?.map((cast) => cast.name)
-                  ?.join(", ") || ""}
-              </p>
+              <p>{cast}</p>
             </div>
           </div>
         </div>

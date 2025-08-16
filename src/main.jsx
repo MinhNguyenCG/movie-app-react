@@ -1,10 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from "@pages/HomePage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MovieDetailPage from "./pages/MovieDetailPage.jsx";
-import RootLayout from "./pages/RootLayout.jsx";
+import MovieDetailPage from "@pages/MovieDetailPage.jsx";
+import RootLayout from "@pages/RootLayout.jsx";
+import TVShowDetailPage from "@pages/TVShowDetailPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,14 @@ const router = createBrowserRouter([
         path: "/movie/:id",
         element: <MovieDetailPage />,
       },
+      {
+        path: "/tv/:id",
+        element: <TVShowDetailPage />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+  <RouterProvider router={router} />,
 );

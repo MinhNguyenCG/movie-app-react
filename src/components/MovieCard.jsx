@@ -5,7 +5,9 @@ const MovieCard = ({ media }) => {
   return (
     <Link
       className="rounded-lg border border-slate-800"
-      to={`/movie/${media.id}`}
+      to={
+        media.media_type === "movie" ? `/movie/${media.id}` : `/tv/${media.id}`
+      }
     >
       <div>
         <div className="relative">
