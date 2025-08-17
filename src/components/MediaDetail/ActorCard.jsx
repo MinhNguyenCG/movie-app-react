@@ -18,7 +18,13 @@ const ActorCard = ({ actor }) => {
       <div className="p-3">
         <p className="font-bold">{actor.name}</p>
         <p>{actor.character}</p>
-        <p>{actor.episode_count ? `${actor.episode_count} episodes` : ""}</p>
+        <p>
+          {actor.episode_count > 1
+            ? `${actor.episode_count} episodes`
+            : actor.episode_count === 1
+              ? `${actor.episode_count} episode`
+              : ""}
+        </p>
       </div>
     </div>
   );
