@@ -5,7 +5,16 @@ import useFetch from "@hooks/useFetch";
 
 const FeatureMovie = () => {
   const [activeMovieId, setActiveMovieId] = useState();
-  const { data: popularMoviesResponse } = useFetch({ url: "/movie/popular" });
+  const { data: popularMoviesResponse } = useFetch({
+    url: "/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&include_video=true",
+  });
+
+  const { data: videoResponse } = useFetch(
+    {
+      url: `/movie/${activeMovieId}/videos`,
+    },
+    { enabled: !!activeMovieId },
+  );
 
   const movies = (popularMoviesResponse.results || []).slice(0, 4);
 
@@ -22,7 +31,15 @@ const FeatureMovie = () => {
         .filter((movie) => movie.id === activeMovieId)
         .map((movie) => (
           <div key={movie.id} className="animate-fadeIn">
-            <Movie data={movie} />
+            <Movie
+              data={movie}
+              trailer_key={
+                (videoResponse?.results || []).find(
+                  (video) =>
+                    video.type === "Trailer" && video.site === "YouTube",
+                )?.key
+              }
+            />
           </div>
         ))}
 

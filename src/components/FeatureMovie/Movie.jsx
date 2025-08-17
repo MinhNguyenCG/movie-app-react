@@ -1,12 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import ImageComponent from "@components/ImageComponent";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ModalContext } from "@context/ModalProvider";
 
-const Movie = ({ data }) => {
-  // Safety check for undefined data
-  if (!data) {
-    return null;
-  }
+const Movie = ({ data, trailer_key }) => {
+  const navigate = useNavigate();
+  const { openPopup } = useContext(ModalContext);
+
+  const iframe = (
+    <iframe
+      title="Trailer"
+      src={`https://www.youtube.com/embed/${trailer_key}`}
+      className="aspect-video w-[50vw]"
+    />
+  );
 
   return (
     <div className="transition-all duration-500 ease-in-out">
@@ -35,11 +44,17 @@ const Movie = ({ data }) => {
           </div>
 
           <div className="mt-4">
-            <button className="mr-2 cursor-pointer rounded bg-white px-4 py-2 text-[10px] text-black transition-all duration-300 hover:bg-gray-200 lg:text-lg">
+            <button
+              onClick={() => openPopup(iframe)}
+              className="mr-2 cursor-pointer rounded bg-white px-4 py-2 text-[10px] text-black transition-all duration-300 hover:bg-gray-200 lg:text-lg"
+            >
               <FontAwesomeIcon icon={faPlay} />
               Play
             </button>
-            <button className="cursor-pointer rounded bg-slate-400/35 px-4 py-2 text-[10px] text-white transition-all duration-300 hover:bg-slate-400/50 lg:text-lg">
+            <button
+              onClick={() => navigate(`/movie/${data.id}`)}
+              className="cursor-pointer rounded bg-slate-400/35 px-4 py-2 text-[10px] text-white transition-all duration-300 hover:bg-slate-400/50 lg:text-lg"
+            >
               View More
             </button>
           </div>
