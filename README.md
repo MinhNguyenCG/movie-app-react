@@ -6,7 +6,8 @@
 
 - **Live Demo**: [Đang phát triển]
 - **Video Demo**: [Đang phát triển]
-
+## ⭐ Mục tiêu project
+- Học React cơ bản
 ## 🚀 Tính năng
 
 ### ✅ Đã hoàn thành
