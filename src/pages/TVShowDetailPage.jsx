@@ -6,6 +6,7 @@ import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 import TVShowInformation from "@components/MediaDetail/TVShowInformation";
+import SeasonsList from "@components/MediaDetail/SeasonList";
 
 const TVShowDetailPage = () => {
   const { id } = useParams();
@@ -63,6 +64,7 @@ const TVShowDetailPage = () => {
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-7xl gap-[3.5vw] p-6 py-10">
           <div className="flex-[2]">
+            <SeasonsList seasons={tvShowInfo.seasons || []} />
             <ActorList
               actorList={(tvShowInfo.aggregate_credits?.cast || []).map(
                 (cast) => ({

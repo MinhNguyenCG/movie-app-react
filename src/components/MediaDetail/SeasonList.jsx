@@ -12,15 +12,15 @@ const SeasonsList = ({ seasons = [] }) => {
             className="flex gap-4 rounded-lg border border-slate-200 p-3 shadow-md"
           >
             <ImageComponent
-              width={130}
-              height={195}
-              className="w-1/4 rounded-lg"
+              width={300}
+              height={450}
+              className="flex-1/3 rounded-lg"
               src={
                 season.poster_path &&
-                `https://media.themoviedb.org/t/p/w300${season.poster_path}`
+                `https://image.tmdb.org/t/p/w300${season.poster_path}`
               }
             />
-            <div className="space-y-1">
+            <div className="flex-2/3 space-y-1">
               <p className="text-[1.4vw] font-bold">{season.name}</p>
               <div className="flex items-center gap-2">
                 <p className="font-bold">Rating</p>
