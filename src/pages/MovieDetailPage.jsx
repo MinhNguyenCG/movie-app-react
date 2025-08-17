@@ -10,7 +10,7 @@ const MovieDetailPage = () => {
   const { id } = useParams();
 
   const { data: movieInfo, isLoading } = useFetch({
-    url: `/movie/${id}?append_to_response=release_dates,credits`,
+    url: `/movie/${id}?append_to_response=release_dates,credits,videos`,
   });
 
   const { data: recommandationsResponse } = useFetch({
@@ -34,6 +34,10 @@ const MovieDetailPage = () => {
     )?.release_dates || []
   ).find((release) => release?.certification)?.certification;
 
+  const trailer_key = (movieInfo?.videos?.results || []).find(
+    (video) => video.type === "Trailer",
+  )?.key;
+
   return (
     <div>
       <Banner
@@ -52,6 +56,7 @@ const MovieDetailPage = () => {
         release_date={movieInfo?.release_date}
         overview={movieInfo?.overview}
         point={movieInfo?.vote_average}
+        trailer_key={trailer_key}
       />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-7xl gap-[3.5vw] p-6 py-10">

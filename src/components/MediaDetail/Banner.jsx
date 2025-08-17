@@ -3,6 +3,8 @@ import CircularProgressBar from "../CircularProgressBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import ImageComponent from "@components/ImageComponent";
+import { useContext } from "react";
+import { ModalContext } from "@context/ModalProvider";
 
 const Banner = ({
   title,
@@ -15,7 +17,17 @@ const Banner = ({
   release_date,
   overview,
   point,
+  trailer_key,
 }) => {
+  const { openPopup } = useContext(ModalContext);
+  const iframe = (
+    <iframe
+      className="h-[50vh] w-[50vw]"
+      src={`https://www.youtube.com/embed/${trailer_key}`}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    ></iframe>
+  );
   return (
     <div className="relative overflow-hidden shadow-sm shadow-slate-800">
       <ImageComponent
@@ -52,7 +64,10 @@ const Banner = ({
               />
               <span>Rating</span>
             </div>
-            <button className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-400 px-2 py-1 transition-all duration-300 hover:bg-gray-600">
+            <button
+              onClick={() => openPopup(iframe)}
+              className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-400 px-2 py-1 transition-all duration-300 hover:bg-gray-600"
+            >
               <FontAwesomeIcon icon={faPlay} className="mr-1" />
               <span>Trailer</span>
             </button>

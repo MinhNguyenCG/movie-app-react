@@ -12,7 +12,7 @@ const TVShowDetailPage = () => {
   const { id } = useParams();
 
   const { data: tvShowInfo, isLoading } = useFetch({
-    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits`,
+    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits,videos`,
   });
 
   const { data: recommandationsResponse } = useFetch({
@@ -47,6 +47,10 @@ const TVShowDetailPage = () => {
     .map((cast) => cast.name)
     .join(", ");
 
+  const trailer_key = (tvShowInfo?.videos?.results || []).find(
+    (video) => video.type === "Trailer",
+  )?.key;
+
   return (
     <div>
       <Banner
@@ -60,6 +64,7 @@ const TVShowDetailPage = () => {
         release_date={tvShowInfo?.first_air_date}
         overview={tvShowInfo?.overview}
         point={tvShowInfo?.vote_average}
+        trailer_key={trailer_key}
       />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-7xl gap-[3.5vw] p-6 py-10">

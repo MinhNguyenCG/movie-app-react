@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MovieDetailPage from "@pages/MovieDetailPage.jsx";
 import RootLayout from "@pages/RootLayout.jsx";
 import TVShowDetailPage from "@pages/TVShowDetailPage.jsx";
+import ModalProvider from "@components/context/ModalProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,5 +29,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <ModalProvider>
+    <RouterProvider router={router} />
+  </ModalProvider>,
 );
