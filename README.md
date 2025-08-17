@@ -2,8 +2,6 @@
 
 Ứng dụng web xem thông tin phim và TV show được xây dựng với React, tích hợp API TMDB để cung cấp dữ liệu phim mới nhất. Ứng dụng cho phép người dùng khám phá, tìm kiếm và xem chi tiết về phim, TV show với giao diện hiện đại và responsive.
 
-![Demo Screenshot](./public/netflix.png)
-
 ## ✨ Demo
 
 - **Live Demo**: [Đang phát triển]
@@ -155,52 +153,6 @@ npm run lint         # Kiểm tra lỗi code
 npm run format       # Format code với Prettier
 ```
 
-## 🎯 Roadmap
-
-### Phase 1: Core Features (80% ✅)
-
-- [x] Homepage với featured movies
-- [x] Movie/TV show detail pages
-- [x] Actor information
-- [x] Trailer modal
-- [x] Responsive design
-
-### Phase 2: Enhanced UX (🔄)
-
-- [ ] Search functionality
-- [ ] Filtering & sorting
-- [ ] User authentication
-- [ ] Watchlist/Favorites
-- [ ] User ratings & reviews
-
-### Phase 3: Advanced Features (📋)
-
-- [ ] PWA capabilities
-- [ ] Offline support
-- [ ] Push notifications
-- [ ] Social sharing
-- [ ] Multi-language support
-
-### Phase 4: Performance & Scale (📋)
-
-- [ ] Performance optimization
-- [ ] Caching strategies
-- [ ] SEO optimization
-- [ ] Analytics integration
-- [ ] A/B testing
-
-## 🤝 Đóng góp
-
-1. Fork dự án
-2. Tạo feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Mở Pull Request
-
-## 📄 License
-
-Dự án này được phát hành dưới MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết.
-
 ## 🙏 Acknowledgments
 
 - [TMDB](https://www.themoviedb.org/) - Cung cấp API dữ liệu phim
@@ -210,9 +162,8 @@ Dự án này được phát hành dưới MIT License - xem file [LICENSE](LICE
 
 ## 📞 Liên hệ
 
-- **Email**: [your-email@example.com]
-- **GitHub**: [@your-username]
-- **LinkedIn**: [your-linkedin]
+- **Email**: [info.nguyenptn1104@gmail.com]
+- **GitHub**: [@MinhNguyenCG]
 
 ---
 
