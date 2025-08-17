@@ -1,36 +1,51 @@
-const TVShowInformation = ({ tvInfo = {} }) => {
+import React from "react";
+import ImageComponent from "@components/ImageComponent";
+
+const TVShowInformation = ({ movieInfo: TVShowInfo }) => {
+  console.log(TVShowInfo);
+
   return (
     <div>
-      <p className="mb-4 text-[1.4vw] font-bold">Information</p>
+      <p className="mb-4 text-[1.4vw] font-bold">Infomation</p>
       <div className="mb-4">
         <p className="font-bold">Original Name</p>
-        <p>{tvInfo.original_name}</p>
+        <p>{TVShowInfo?.original_name}</p>
       </div>
       <div className="mb-4">
         <p className="font-bold">Original Country</p>
-        {(tvInfo.origin_country || []).map((countryCode) => (
-          <img
-            key={countryCode}
-            src={`https://flagcdn.com/48x36/${countryCode.toLowerCase()}.png`}
-            className="mt-1 mr-1 w-[1.4vw]"
-          />
-        ))}
+        {TVShowInfo?.origin_country?.map(
+          (countryCode) =>
+            countryCode && (
+              <img
+                key={countryCode}
+                src={`https://flagsapi.com/${countryCode}/flat/64.png`}
+                alt={countryCode}
+                className="h-[2vw] w-[2vw]"
+              />
+            ),
+        )}
       </div>
       <div className="mb-4">
         <p className="font-bold">Status</p>
-        <p>{tvInfo.status}</p>
+        <p>{TVShowInfo?.status}</p>
       </div>
       <div className="mb-4">
-        <p className="font-bold">Network</p>
-        {(tvInfo.networks || []).map((network) => (
-          <img
-            className="invert"
-            key={network.id}
-            src={`https://media.themoviedb.org/t/p/h30${network.logo_path}`}
-          />
-        ))}
+        <p className="font-bold">Networks</p>
+        <div className="flex flex-wrap gap-2">
+          {TVShowInfo?.networks?.map((network) => (
+            <ImageComponent
+              key={network.id}
+              src={`https://media.themoviedb.org/t/p/h30${network.logo_path}`}
+              alt={network.name}
+              className="invert"
+            />
+          ))}
+        </div>
       </div>
+
+      <div className="mb-4"></div>
     </div>
   );
 };
+
 export default TVShowInformation;

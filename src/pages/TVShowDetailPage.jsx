@@ -5,7 +5,7 @@ import LoadingPage from "@components/Loading";
 import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
-import MovieInformation from "@components/MediaDetail/MovieInformation";
+import TVShowInformation from "@components/MediaDetail/TVShowInformation";
 
 const TVShowDetailPage = () => {
   const { id } = useParams();
@@ -75,7 +75,7 @@ const TVShowDetailPage = () => {
             <RelatedMediaList mediaList={relatedTVShows} />
           </div>
           <div className="mb-4 flex-1">
-            <MovieInformation movieInfo={tvShowInfo} />
+            <TVShowInformation movieInfo={tvShowInfo} />
           </div>
         </div>
       </div>
