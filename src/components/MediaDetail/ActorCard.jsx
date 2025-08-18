@@ -1,9 +1,13 @@
 import React from "react";
 import ImageComponent from "@components/ImageComponent";
+import { Link } from "react-router-dom";
 
 const ActorCard = ({ actor }) => {
   return (
-    <div className="rounded-lg border border-slate-800 bg-black shadow-sm">
+    <Link
+      to={`/people/${actor.id}`}
+      className="rounded-lg border border-slate-800 bg-black shadow-sm"
+    >
       <ImageComponent
         src={
           actor.profile_path
@@ -26,7 +30,7 @@ const ActorCard = ({ actor }) => {
               : ""}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

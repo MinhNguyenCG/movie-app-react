@@ -13,9 +13,8 @@ const MovieCard = ({ media }) => {
         <div className="relative">
           <ImageComponent
             src={
-              media.backdrop_path
-                ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
-                : "/placeholder.png"
+              media.poster_path &&
+              `https://image.tmdb.org/t/p/w500${media.poster_path}`
             }
             alt={media.title}
             className="w-full rounded-t-lg"

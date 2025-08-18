@@ -29,3 +29,10 @@ export const RATED_TABS = [
     url: "tv/top_rated?language=en-US&page=1",
   },
 ];
+
+export const GENDER_MAP = {
+  0: "Unknown",
+  1: "Female",
+  2: "Male",
+  3: "Non-binary",
+};
