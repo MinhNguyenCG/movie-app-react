@@ -33,20 +33,20 @@ const Banner = ({
       <ImageComponent
         src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
         alt=""
-        className="absolute inset-0 w-full brightness-20"
+        className="absolute inset-0 h-full w-full object-cover brightness-20"
       />
 
-      <div className="relative mx-auto flex max-w-7xl gap-[2.5vw] p-6 py-10">
-        <ImageComponent
-          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-          alt=""
-          className="flex-1/3 overflow-hidden rounded-lg"
-          width={500}
-          height={300}
-        />
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-[2.5vw] p-6 py-10 md:flex-row">
+        <div className="w-full flex-shrink-0 md:w-1/3">
+          <ImageComponent
+            src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+            alt=""
+            className="h-auto max-h-[70vh] w-full rounded-lg object-contain md:object-cover"
+          />
+        </div>
 
-        <div className="flex-2/3 text-[1.2vw] text-white">
-          <h1 className="mb-2 text-[2vw] font-bold">{title}</h1>
+        <div className="w-full text-base text-white md:w-2/3 md:text-[1.2vw]">
+          <h1 className="mb-2 text-xl font-bold md:text-[2vw]">{title}</h1>
           <div className="flex items-center gap-2">
             <span className="border border-gray-400 p-1 text-gray-400">
               {certificate}
