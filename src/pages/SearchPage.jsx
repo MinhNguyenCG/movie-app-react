@@ -1,21 +1,40 @@
-import React from "react";
+import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 import SearchForm from "@components/SearchForm";
+import useFetch from "@hooks/useFetch";
+import { useState } from "react";
 
 const SearchPage = () => {
-  return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-[3.5vw] p-6 py-10">
-      <p className="text-[2vw] font-bold">Search</p>
-      <div className="flex flex-1">
-        <div className="flex-1">
-          <SearchForm />
-        </div>
+  const [searchFormValues, setSearchFormValues] = useState({
+    mediaType: "movie",
+    genres: [],
+    rating: "All",
+  });
 
-        <div className="flex-3">
-          <p>Search Result</p>
+  const [minRating, maxRating] =
+    searchFormValues.rating === "All"
+      ? [0, 100]
+      : searchFormValues.rating.split(" - ");
+
+  const { data } = useFetch({
+    url: `/discover/${searchFormValues.mediaType}?sort_by=popularity.desc&with_genres=${searchFormValues.genres.join(",")}&vote_average.gte=${minRating / 10}&vote_average.lte=${maxRating / 10}`,
+  });
+
+  console.log({ data });
+
+  return (
+    <div className="bg-black text-white">
+      <div className="mx-auto flex max-w-7xl flex-col gap-[3.5vw] p-6 py-10">
+        <p className="text-2xl font-bold">Search</p>
+        <div className="flex gap-6">
+          <div className="flex-1">
+            <SearchForm setSearchFormValues={setSearchFormValues} />
+          </div>
+          <div className="flex-[3]">
+            <RelatedMediaList mediaList={data.results || []} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default SearchPage;
