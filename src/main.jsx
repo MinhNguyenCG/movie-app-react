@@ -1,15 +1,18 @@
 import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import HomePage from "@pages/HomePage.jsx";
+// import HomePage from "@pages/HomePage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import MovieDetailPage from "@pages/MovieDetailPage.jsx";
 import RootLayout from "@pages/RootLayout.jsx";
-import TVShowDetailPage from "@pages/TVShowDetailPage.jsx";
+// import TVShowDetailPage from "@pages/TVShowDetailPage.jsx";
 import ModalProvider from "@components/context/ModalProvider.jsx";
-import PeopleDetailPage from "@pages/PeopleDetailPage.jsx";
+// import PeopleDetailPage from "@pages/PeopleDetailPage.jsx";
 const MovieDetailPage = lazy(() => import("@pages/MovieDetailPage.jsx"));
-
+const TVShowDetailPage = lazy(() => import("@pages/TVShowDetailPage.jsx"));
+const PeopleDetailPage = lazy(() => import("@pages/PeopleDetailPage.jsx"));
+const HomePage = lazy(() => import("@pages/HomePage.jsx"));
+const SearchPage = lazy(() => import("@pages/SearchPage.jsx"));
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
@@ -29,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/people/:id",
         element: <PeopleDetailPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
     ],
   },
